@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes=FlashCommandApplication.class)
-class FlashCommandApplication {
+class FlashCommandApplicationTest {
 
 	@Test
 	void contextLoads() {
