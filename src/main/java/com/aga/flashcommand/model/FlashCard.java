@@ -2,7 +2,9 @@ package com.aga.flashcommand.model;
 
 import java.util.List;
 
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +25,9 @@ public class FlashCard {
     @ManyToOne
     @JoinColumn(name = "command_id") // Maps the foreign key column in the DB
     private Command command;
+    @ElementCollection 
+    @CollectionTable(name="flashcard_problem_tags", joinColumns=@JoinColumn(name="flashcard_id"));
+    @Column(name="tag")
     List<String> problemTags;
     
     public FlashCard() {} // Dodaj ten konstruktor
