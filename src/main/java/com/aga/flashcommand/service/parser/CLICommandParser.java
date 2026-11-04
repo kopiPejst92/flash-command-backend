@@ -1,5 +1,6 @@
 package com.aga.flashcommand.service.parser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -24,10 +25,19 @@ public class CLICommandParser implements CommandParser{
         if (rawSyntax == null || rawSyntax.isBlank()) {
             throw new IllegalArgumentException("Raw syntax cannot be empty");
         }
-        String[] tokens= rawSyntax.split("\\s+");
-        List<ArgumentDTO> argumentDTOs = Arrays.stream(tokens).skip(2).map(token-> new ArgumentDTO(null, token, "Parsed argument")).toList();
-        CommandDTO parsed=new CommandDTO(null, tokens[0], tokens[1], "Parsed CLI command", argumentDTOs);
-        return parsed;
+        String trimmed = rawSyntax.trim();
+        String[] tokens= trimmed.split("\\s+");
+        
+        List<ArgumentDTO> argumentDTOs = new ArrayList<>();
+        
+        if(tokens.length> 2){
+            argumentDTOs = Arrays.stream(tokens)
+                .skip(2)
+                .map(token-> new ArgumentDTO(null, token, "Parsed argument"))
+                .toList();
+        }
+        
+        return new CommandDTO(null, tokens[0], tokens[1], "Parsed CLI command", argumentDTOs);
     }
 
 }
