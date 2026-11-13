@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.aga.flashcommand.dto.FlashCardDTO;
+import com.aga.flashcommand.dto.FlashCardResponseDTO;
 import com.aga.flashcommand.event.FlashCardCreatedEvent;
 import com.aga.flashcommand.exception.CardNotFoundException;
 import com.aga.flashcommand.mapper.FlashCardMapper;
@@ -31,13 +32,17 @@ public class FlashCardService {
     }
 
     @Transactional
-    public FlashCardDTO createFlashCard(FlashCardDTO fcDTO) {
+    public FlashCardResponseDTO createFlashCard(FlashCardDTO fcDTO) {
         Command command = commandService.getOrCreateCommand(fcDTO.rawCommandString(), fcDTO.command());
         FlashCard flashCard = flashCardMapper.toEntity(fcDTO);
         if(flashCard.getCommand()==null){
             flashCard.setCommand(command);
         }
+        
+        //Tworzymy encje w bazie
         FlashCard saved = flashCardRepository.save(flashCard);
+
+        //Wysyłamy zdarzenie w kafce
         FlashCardCreatedEvent event = new FlashCardCreatedEvent(
             saved.getId(),
             saved.getTitle(),
@@ -45,7 +50,8 @@ public class FlashCardService {
             LocalDateTime.now()
         );
         kafkaTemplate.send("flashcard-created-topic", saved.getId().toString(), event);
-        return flashCardMapper.toDto(saved);  
+       
+        return flashCardMapper.toResponseDTO(saved);  
     }
 
     @Transactional

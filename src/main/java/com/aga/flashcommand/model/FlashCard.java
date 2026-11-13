@@ -26,7 +26,7 @@ public class FlashCard {
     @JoinColumn(name = "command_id") // Maps the foreign key column in the DB
     private Command command;
     @ElementCollection 
-    @CollectionTable(name="flashcard_problem_tags", joinColumns=@JoinColumn(name="flashcard_id"));
+    @CollectionTable(name="flashcard_problem_tags", joinColumns=@JoinColumn(name="flashcard_id"))
     @Column(name="tag")
     List<String> problemTags;
     

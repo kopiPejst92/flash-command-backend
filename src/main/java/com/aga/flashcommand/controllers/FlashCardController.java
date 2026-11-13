@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aga.flashcommand.dto.FlashCardDTO;
+import com.aga.flashcommand.dto.FlashCardResponseDTO;
 import com.aga.flashcommand.service.FlashCardService;
 
 import jakarta.validation.Valid;
@@ -38,8 +39,8 @@ public class FlashCardController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<FlashCardDTO> addFlashCard(@Valid @RequestBody FlashCardDTO flashCardDTO){
-        FlashCardDTO newFlashCard = flashCardService.createFlashCard(flashCardDTO);
+    public ResponseEntity<FlashCardResponseDTO> addFlashCard(@Valid @RequestBody FlashCardDTO flashCardDTO){
+        FlashCardResponseDTO newFlashCard = flashCardService.createFlashCard(flashCardDTO);
         return new ResponseEntity<>(newFlashCard, HttpStatus.CREATED);
     }
 
