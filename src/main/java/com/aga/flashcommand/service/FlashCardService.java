@@ -64,13 +64,13 @@ public class FlashCardService {
         return flashCardMapper.toDto(toUpdate);
     }
 
-    public List<FlashCardDTO> findAllFlashCards(){
-        return flashCardMapper.toDtoList(flashCardRepository.findAll());
+    public List<FlashCardResponseDTO> findAllFlashCards(){
+        return flashCardMapper.toResponseDTOList(flashCardRepository.findAll());
     }
 
-    public FlashCardDTO findFlashCardById(Long id){
+    public FlashCardResponseDTO findFlashCardById(Long id){
         FlashCard found= flashCardRepository.findById(id).orElseThrow(() -> new CardNotFoundException("Flash card"+id+" is not found"));
-        return flashCardMapper.toDto(found);
+        return flashCardMapper.toResponseDTO(found);
     }
 
     public void deleteFlashCard(Long id){

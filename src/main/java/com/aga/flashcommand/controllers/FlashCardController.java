@@ -27,14 +27,14 @@ public class FlashCardController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<FlashCardDTO>> getAllFlashCards(){
-        List<FlashCardDTO> found = flashCardService.findAllFlashCards();
+    public ResponseEntity<List<FlashCardResponseDTO>> getAllFlashCards(){
+        List<FlashCardResponseDTO> found = flashCardService.findAllFlashCards();
         return new ResponseEntity<>(found, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<FlashCardDTO> getFlashCardById(@PathVariable("id") Long id){
-        FlashCardDTO flashCard= flashCardService.findFlashCardById(id);
+    public ResponseEntity<FlashCardResponseDTO> getFlashCardById(@PathVariable("id") Long id){
+        FlashCardResponseDTO flashCard= flashCardService.findFlashCardById(id);
         return new ResponseEntity<>(flashCard, HttpStatus.OK);
     }
 
