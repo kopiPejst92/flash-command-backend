@@ -3,7 +3,7 @@ Aplikacja backendowa w Spring Boot służąca do zarządzania fiszkami z komenda
 Cel: Projekt do portfolio QA Automation 
 
 ##Stack Technologiczny
--Jezyk i framework: Java 21, Spring Boot 3.11, Maven
+-Jezyk i framework: Java 21, Spring Boot 3.2, Maven
 -Warstwa danych: Spring Data JPA MapStruct (`componentModel="spring"`), Kafka
 -Testy: Junit 5, Mockito, AssertJ, MockMvc, RestAssured, Testcontainer
 -CI/CD: Jenkinsfile (`Jenkinsfile` jako Pipeline)
