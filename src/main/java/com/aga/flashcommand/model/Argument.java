@@ -19,10 +19,6 @@ public class Argument {
     private Long id;
     @Column(nullable = false, updatable = true)
     private String name;
-    // private String shortName;
-    // private ArgumentType type;
-    // private String description;
-    // private boolean required;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="command_id", nullable = false)
@@ -50,36 +46,5 @@ public class Argument {
     public void setCommand(Command command) {
         this.command = command;
     }
-
-    // public String getShortName() {
-    //     return shortName;
-    // }
-
-    // public void setShortName(String shortName) {
-    //     this.shortName = shortName;
-    // }
-    // public ArgumentType getType() {
-    //     return type;
-    // }
-
-    // public void setType(ArgumentType type) {
-    //     this.type = type;
-    // }
-    // public String getDescription() {
-    //     return description;
-    // }
-
-    // public void setDescription(String description) {
-    //     this.description = description;
-    // }
-
-
-    //   public boolean isRequired() {
-    //     return required;
-    // }
-
-    // public void setRequired(boolean required) {
-    //     this.required = required;
-    // }
 
 }
