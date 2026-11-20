@@ -1,10 +1,8 @@
 package com.aga.flashcommand.service;
-
-import jakarta.transaction.Transactional;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.aga.flashcommand.dto.FlashCardDTO;
 import com.aga.flashcommand.dto.FlashCardResponseDTO;
@@ -64,10 +62,12 @@ public class FlashCardService {
         return flashCardMapper.toDto(toUpdate);
     }
 
+    @Transactional(readOnly=true)
     public List<FlashCardResponseDTO> findAllFlashCards(){
         return flashCardMapper.toResponseDTOList(flashCardRepository.findAll());
     }
 
+    @Transactional(readOnly=true)
     public FlashCardResponseDTO findFlashCardById(Long id){
         FlashCard found= flashCardRepository.findById(id).orElseThrow(() -> new CardNotFoundException("Flash card"+id+" is not found"));
         return flashCardMapper.toResponseDTO(found);
