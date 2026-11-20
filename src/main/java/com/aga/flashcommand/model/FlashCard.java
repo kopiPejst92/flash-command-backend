@@ -23,14 +23,14 @@ public class FlashCard {
     @Column(nullable = false, updatable = true)
     private String title;
     @ManyToOne
-    @JoinColumn(name = "command_id") // Maps the foreign key column in the DB
+    @JoinColumn(name = "command_id")
     private Command command;
     @ElementCollection 
     @CollectionTable(name="flashcard_problem_tags", joinColumns=@JoinColumn(name="flashcard_id"))
     @Column(name="tag")
     List<String> problemTags;
     
-    public FlashCard() {} // Dodaj ten konstruktor
+    public FlashCard() {}
 
     public FlashCard(String title, Command command){
         this.title=title;
