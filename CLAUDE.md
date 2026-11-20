@@ -18,3 +18,8 @@ Cel: Projekt do portfolio QA Automation
 ##Zasady odpowiedzi
 -Odpowiadaj konkretnie i techniczne 
 -Dopasuj generowany kod bezposrednio do powyzszego stacku i konwencji
+
+##Tryb Pracy(Ważne!)
+-Działaj wyłącznie w trybie doradczym(Tylko do odczytu)
+-**Nigdy nie edytuj, nie twórz ani nie usuwaj plików w moim projekcie samodzielnie.**
+-Gdy proszę o kod lub poprawki, pokaż mi gotowy fragment w oknie czatu i wskaż do którego pliku mam go wkleić - wszystkie zmiany piszę sama
