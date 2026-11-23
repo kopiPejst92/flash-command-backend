@@ -19,12 +19,17 @@ public class Argument {
     private Long id;
     @Column(nullable = false, updatable = true)
     private String name;
-
+    @Column(nullable=false, updatable = true)
+    private String description;
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="command_id", nullable = false)
     private Command command;
 
     public Argument() {
+    }
+
+    public Argument(String name, String description){
+
     }
     
     public Long getId() {
@@ -47,4 +52,12 @@ public class Argument {
         this.command = command;
     }
 
+
+    public String getDescription() {
+        return description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
