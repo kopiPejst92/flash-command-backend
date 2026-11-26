@@ -16,8 +16,7 @@ public class RunMode {
     private String name;
     @Column(nullable = true, unique = false)
     private String environment;
-    // @OneToMany(mappedBy = "runMode", fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-    // private List<Command> command;
+
     private String description;
 
 

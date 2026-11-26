@@ -3,8 +3,10 @@ package com.aga.flashcommand.mapper;
 import java.util.List;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import com.aga.flashcommand.dto.FlashCardDTO;
+import com.aga.flashcommand.dto.FlashCardResponseDTO;
 import com.aga.flashcommand.model.FlashCard;
 
 
@@ -16,4 +18,9 @@ public interface FlashCardMapper{
 
     FlashCard toEntity(FlashCardDTO flashCardDTO);
 
+    @Mapping(target="commandDTO", source="command")
+    @Mapping(target="status", constant="CREATED")
+    public FlashCardResponseDTO toResponseDTO(FlashCard flashCard);
+
+    List<FlashCardResponseDTO> toResponseDTOList(List<FlashCard> flashCards);
 }

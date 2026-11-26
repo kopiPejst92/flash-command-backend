@@ -14,9 +14,6 @@ public class Framework {
     private Long id;
     
     private String name;
-
-    // @OneToMany(mappedBy = "framework", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    // private List<Library> libraryList;
     
     public Framework(String name) {
         this.name = name;

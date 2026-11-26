@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aga.flashcommand.dto.FlashCardDTO;
+import com.aga.flashcommand.dto.FlashCardResponseDTO;
 import com.aga.flashcommand.service.FlashCardService;
 
 import jakarta.validation.Valid;
@@ -26,20 +27,20 @@ public class FlashCardController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<FlashCardDTO>> getAllFlashCards(){
-        List<FlashCardDTO> found = flashCardService.findAllFlashCards();
+    public ResponseEntity<List<FlashCardResponseDTO>> getAllFlashCards(){
+        List<FlashCardResponseDTO> found = flashCardService.findAllFlashCards();
         return new ResponseEntity<>(found, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<FlashCardDTO> getFlashCardById(@PathVariable("id") Long id){
-        FlashCardDTO flashCard= flashCardService.findFlashCardById(id);
+    public ResponseEntity<FlashCardResponseDTO> getFlashCardById(@PathVariable("id") Long id){
+        FlashCardResponseDTO flashCard= flashCardService.findFlashCardById(id);
         return new ResponseEntity<>(flashCard, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<FlashCardDTO> addFlashCard(@Valid @RequestBody FlashCardDTO flashCardDTO){
-        FlashCardDTO newFlashCard = flashCardService.createFlashCard(flashCardDTO);
+    public ResponseEntity<FlashCardResponseDTO> addFlashCard(@Valid @RequestBody FlashCardDTO flashCardDTO){
+        FlashCardResponseDTO newFlashCard = flashCardService.createFlashCard(flashCardDTO);
         return new ResponseEntity<>(newFlashCard, HttpStatus.CREATED);
     }
 
