@@ -39,5 +39,4 @@ public class CLICommandParser implements CommandParser{
         
         return new CommandDTO(null, tokens[0], tokens[1], "Parsed CLI command", argumentDTOs);
     }
-
 }

@@ -33,8 +33,8 @@ public class Command implements Serializable {
     @OneToMany(mappedBy = "command", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Argument> arguments;
 
-    public Command(String base, String description) {
-        this.syntax = base;
+    public Command(String syntax, String description) {
+        this.syntax = syntax;
         this.description = description;
     }
 
@@ -50,8 +50,8 @@ public class Command implements Serializable {
         return syntax;
     }
 
-    public void setSyntax(String name) {
-        this.syntax = name;
+    public void setSyntax(String syntax) {
+        this.syntax = syntax;
     }
 
     public String getDescription() {
